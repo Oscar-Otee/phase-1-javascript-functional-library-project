@@ -26,12 +26,14 @@ const toStandardizeInput = function(collection) {
   
   const myReduce = function(collection, callback, acc) {
     let newCollection = toStandardizeInput(collection);
-  
-    // The if statement below handles the case where no start value is passed in 
-    // for the accumulator
-    // If acc is null, it is set equal to the first value in newCollection
-    // That first value is then sliced out of newCollection since it has already
-    // been accounted for
+  /*
+    The if statement below handles the case where no start value is passed in 
+    for the accumulator
+    If acc is null, it is set equal to the first value in newCollection
+    That first value is then sliced out of newCollection since it has already
+    been accounted for
+    */
+
     if (!acc) {
       acc = newCollection[0];
       newCollection = newCollection.slice(1);
@@ -103,11 +105,14 @@ const toStandardizeInput = function(collection) {
       receiver.push(element);
     }
   }
+  /*
   
-  // myFlatten handles two separate cases: shallow=true and shallow=false
-  // For the true case, the top-level elements are simply pushed into newArr using
-  // the unpack helper function
-  // For the false case, myFlatten is called recursively for each element
+  myFlatten handles two separate cases: shallow=true and shallow=false
+  For the true case, the top-level elements are simply pushed into newArr using
+  the unpack helper function
+  For the false case, myFlatten is called recursively for each element
+*/
+
   const myFlatten = function(collection, shallow, newArray=[]) {
     if (shallow) {
       for (let element of collection) {
